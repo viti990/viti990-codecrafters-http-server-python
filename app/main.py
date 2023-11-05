@@ -11,8 +11,8 @@ def main():
     #
     server_socket = socket.create_server(("localhost", 4221))
     conn, addr = server_socket.accept()
-    print(f"Connected by {addr}")
-    #print(conn.recv(4096))
+    #print(f"Connected by {addr}")
+    conn.recv(1024)
     conn.send(HTTP_200.encode())
     #conn.send(data.encode())
 
