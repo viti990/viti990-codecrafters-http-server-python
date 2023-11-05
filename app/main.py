@@ -9,7 +9,7 @@ def main():
     HTTP_200 = "HTTP/1.1 200 huehuebrbr" + HEADERS_END
     # Uncomment this to pass the first stage
     #
-    server_socket = socket.create_server(("localhost", 4221))
+    server_socket = socket.create_server(("localhost", 4221), reuse_port=True)
     conn, addr = server_socket.accept()
     #print(f"Connected by {addr}")
     conn.recv(1024)
