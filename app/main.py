@@ -13,16 +13,18 @@ def main():
     
     with socket.create_server(("localhost", 4221)) as server_socket:
         while True:
-            conn, address = server_socket.accept()
-            
+            conn, address = server_socket.accept() 
             with conn:
                 chunk = conn.recv(BUFFER)
                 string_chunk = chunk.decode("utf-8")
                 start_line = string_chunk.split(CRLF)[0]
                 path = start_line.split(" ")[1]
-                if path == '/':
+                if path[0] == '/':
                     print('200')
-                    conn.send(HTTP_200.encode())
+                    response = HTTP_200[:-4] + "{0}Content-Type: text/plain{0}Content-Length: {1}{0}".format(CRLF, len(path)-1) + \
+                    path[1:]
+                    print(response.encode())
+                    conn.send(response.encode())
                 else:
                     print('404')
                     conn.send(HTTP_404.encode())
