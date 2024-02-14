@@ -23,8 +23,8 @@ def main():
                     print('200')
                     response = HTTP_200
                 elif path.startswith('/echo'):
-                        response = HTTP_200[:-4] + "{0}Content-Type: text/plain{0}Content-Length: {1}{0}".format(CRLF, len(path[1:].split('/')[1])) + \
-                        path[1:].split("/")[1]
+                        response = HTTP_200[:-4] + "{0}Content-Type: text/plain{0}Content-Length: {1}{0}".format(CRLF, len(path[1:].split('/')[-1])) + \
+                        path[1:].split("/")[-1]
                 else:
                     print('404')
                     response = HTTP_404
