@@ -19,7 +19,6 @@ def main():
                 string_chunk = chunk.decode("utf-8")
                 start_line = string_chunk.split(CRLF)[0]
                 path = start_line.split(" ")[1]
-                print(path[1:].split("/")[1])
                 if path[0] == '/':
                     print('200')
                     if len(path)-1 == 0:
