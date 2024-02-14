@@ -24,7 +24,7 @@ def main():
                     if len(path)-1 == 0:
                         response = HTTP_200
                     else:
-                        response = HTTP_200[:-4] + "{0}Content-Type: text/plain{0}Content-Length: {1}{0}".format(CRLF, len(path[1:].split('/')[1])-1) + \
+                        response = HTTP_200[:-4] + "{0}Content-Type: text/plain{0}Content-Length: {1}{0}".format(CRLF, len(path[1:].split('/')[1])) + \
                         path[1:].split("/")[1]
                     print(response.encode())
                     conn.send(response.encode())
