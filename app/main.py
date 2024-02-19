@@ -26,7 +26,7 @@ def worker(conn):
     elif path.startswith('/files'):
         try:
             print('200')
-            print("./"+path[7:]+"hue")
+            print(string_chunk)
             body = open("./"+path[7:],"r").read()
             response = HTTP_200[:-4] + "{0}Content-Type: application/octet-stream{0}Content-Length: {1}{0}{0}".format(CRLF, len(path[7:])) + \
             body
