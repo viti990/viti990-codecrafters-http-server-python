@@ -26,9 +26,7 @@ def worker(conn):
     elif path.startswith('/files'):
         try:
             print('200')
-            print(sys.argv[0],sys.argv[1],sys.argv[2],sep=" ")
             body = open("{}/{}".format(sys.argv[2],path[7:]),"r").read()
-            print(body)
             response = HTTP_200[:-4] + "{0}Content-Type: application/octet-stream{0}Content-Length: {1}{0}{0}".format(CRLF, len(body)) + \
             body
             print(response)
