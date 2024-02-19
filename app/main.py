@@ -29,6 +29,7 @@ def worker(conn):
             body = open(path[7:],"r").read()
             response = HTTP_200[:-4] + "{0}Content-Type: application/octet-stream{0}Content-Length: {1}{0}{0}".format(CRLF, len(path[7:])) + \
             body
+            print(response)
         except:
             print('404')
             response = HTTP_404
