@@ -9,7 +9,8 @@ HTTP_404 = "HTTP/1.1 404 NOT FOUND" + HEADERS_END
 def parse(string_chunk):
     start_line = string_chunk.split(CRLF)[0]
     path = start_line.split(" ")[1]
-    if path == '/' + CRLF:
+    print(path)
+    if path == '/':
         print('200')
         response = HTTP_200
     elif path.startswith('/echo'):
