@@ -1,7 +1,7 @@
 # Uncomment this to pass the first stage
 import socket
 import threading
-import os
+import sys
 BUFFER = 1024
 CRLF = "\r\n"
 HEADERS_END = CRLF + CRLF
@@ -26,10 +26,11 @@ def worker(conn):
     elif path.startswith('/files'):
         try:
             print('200')
-            body = open("./your_server.sh","r").read()
+            print(sys.argv[0],sys.argv[1],sys.argv[2],sep=" ")
+            body = open("{}/{}".format(sys.argv[2],path[7:]),"r").read()
             print(body)
-            response = HTTP_200[:-4] + "{0}Content-Type: application/octet-stream{0}Content-Length: {1}{0}{0}".format(CRLF, len(path[7:]))# + \
-            #body
+            response = HTTP_200[:-4] + "{0}Content-Type: application/octet-stream{0}Content-Length: {1}{0}{0}".format(CRLF, len(path[7:])) + \
+            body
             print(response)
         except:
             print('404')
