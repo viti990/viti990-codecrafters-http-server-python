@@ -13,29 +13,28 @@ def worker(conn):
     start_line = string_chunk.split(CRLF)[0]
     path = start_line.split(" ")[1]
     if path == '/':
-        print('200')
         response = HTTP_200
-    elif path.startswith('/echo'):
         print('200')
+    elif path.startswith('/echo'):
         response = HTTP_200[:-4] + "{0}Content-Type: text/plain{0}Content-Length: {1}{0}{0}".format(CRLF, len(path[6:])) + \
         path[6:]
-    elif path.startswith('/user-agent'):
         print('200')
+    elif path.startswith('/user-agent'):
         response = HTTP_200[:-4] + "{0}Content-Type: text/plain{0}Content-Length: {1}{0}{0}".format(CRLF, len(string_chunk.split(CRLF)[2].split(': ')[1])) + \
         string_chunk.split(CRLF)[2].split(': ')[1]
+        print('200')
     elif path.startswith('/files'):
         try:
-            print('200')
             body = open("{}/{}".format(sys.argv[2],path[7:]),"r").read()
             response = HTTP_200[:-4] + "{0}Content-Type: application/octet-stream{0}Content-Length: {1}{0}{0}".format(CRLF, len(body)) + \
             body
-            print(response)
+            print('200')
         except:
-            print('404')
             response = HTTP_404
+            print('404')
     else:
-        print('404')
         response = HTTP_404
+        print('404')
     conn.send(response.encode())
 def main():
     # You can use print statements as follows for debugging, they'll be visible when running tests.
