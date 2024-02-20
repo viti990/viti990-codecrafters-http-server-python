@@ -43,7 +43,6 @@ def worker(conn):
         response = HTTP_200[:-4] + "{0}Content-Type: application/octet-stream{0}Content-Length: {1}{0}{0}".format(CRLF, len(body)) + \
         body
         print('200')
-
     conn.send(response.encode())
 def main():
     # You can use print statements as follows for debugging, they'll be visible when running tests.
