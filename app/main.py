@@ -35,6 +35,7 @@ def worker(conn):
     else:
         response = HTTP_404
         print('404')
+    print("flag1")
     conn.send(response.encode())
 def main():
     # You can use print statements as follows for debugging, they'll be visible when running tests.
