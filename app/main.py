@@ -40,7 +40,8 @@ def worker(conn):
             print('404')
     elif string_chunk.startswith("POST"):
         body = string_chunk.split(HEADERS_END)[1]
-        body.open("{}/{}".format(sys.argv[2],path[7:]),"w").write()
+        f = open("{}/{}".format(sys.argv[2],path[7:]),"w")
+        f.write(body)
         response = HTTP_201
     conn.send(response.encode())
 def main():
