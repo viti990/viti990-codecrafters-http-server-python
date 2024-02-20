@@ -30,7 +30,7 @@ def worker(conn):
             body
             print('200')
         except:
-            response = HTTP_404[:-4]+"{0}Content-Length: {1}{0}{0}".format(CRLF, len(0))
+            response = HTTP_404[:-4]+"{0}Content-Length: {1}{0}{0}".format(CRLF, 0)
             print('404')
     else:
         response = HTTP_404
