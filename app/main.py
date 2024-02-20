@@ -42,6 +42,7 @@ def worker(conn):
         body = string_chunk.split(HEADERS_END)[1]
         f = open("{}/{}".format(sys.argv[2],path[7:]),"w")
         f.write(body)
+        f.close()
         response = HTTP_201
     conn.send(response.encode())
 def main():
